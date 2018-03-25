@@ -1,6 +1,8 @@
 #include "numconvert.h"
 
+//Функция перевода римских чисел в арабские
 int fromRoman(string num) {
+    //Инициализация начальных данных
     map<char,int> roman = {
         {'I', 1},
         {'V', 5},
@@ -15,6 +17,7 @@ int fromRoman(string num) {
         num_int_pr = 0,
         ans = 0;
 
+    //Функция перевода, поэлементно берет цифру и записывает арабский аналог, в случае значения состоящего из двух элементов (4, 9, 40 и т.п.) заменяет на новое
     for(unsigned int i = 0; i < num.size(); i++) {
         num_int = roman[num[i]];
 
@@ -31,8 +34,9 @@ int fromRoman(string num) {
     return ans;
 }
 
+//Функция перевода арабских чисел в римские
 string fromArabic(string num) {
-
+    //Инициализация начальных данных
     map<int, string> arabic = {
         {1000, "M"},
         {900, "CM"},
@@ -50,9 +54,10 @@ string fromArabic(string num) {
     };
 
     int ar_num = stoi(num);
-    string ans = "";
-    map<int, string>::reverse_iterator it = arabic.rbegin();
+    string ans;
+    auto it = arabic.rbegin();
 
+    //Функция перевода, начинает записывать римское число с тысяч, доходя до единиц
     while(ar_num) {
         if(ar_num >= it -> first) {
             ans += it -> second;

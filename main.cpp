@@ -12,6 +12,7 @@ int main()
     string num;
     cin >> num;
 
+    // Определение ввода римского/арабского числа
     if(num[0] > 57) {
         cout << fromRoman(num) << "\n";
     }
